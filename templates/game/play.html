@@ -1,0 +1,59 @@
+<!--
+Chad Cumba
+Chad.Cumba@mail.utexas.edu
+Developed in the Poldrack Lab at the University of Texas at Austin
+-->
+{% extends "generic/base.html" %}
+
+{% block styles %}
+    {% for sheet in styles %}
+<LINK REL=StyleSheet HREF="{{sheet}}" TYPE="text/css" MEDIA=screen>
+    {% endfor %}
+{% endblock %}
+
+{% block javascript %}
+    {% for file in js %}
+<script type="text/javascript" language="javascript" src="{{file}}"></script>
+    {% endfor %}
+{% endblock %}
+
+{% block title %}Play Game{% endblock %}
+
+
+
+{% block content %}
+
+       <div class="img-block-top">
+          <div class="img-block-inner">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/01.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/02.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/03.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/04.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/05.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/06.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/07.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/08.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/09.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/10.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/11.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/12.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/13.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/14.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/15.png">
+              <img alt="" class="card-img" src="/{{media_location}}CardStim/16.png">
+              <img alt="" class="card-img win-img" src="/{{media_location}}CardStim/win.png">
+              <img alt="" class="card-img lose-img" src="/{{media_location}}CardStim/lose.png">
+              <p class="loading-text">Loading</p>
+
+          </div>
+
+
+
+      </div>
+
+
+
+
+      <p class="instruction-text">
+      </p>
+{% endblock %}

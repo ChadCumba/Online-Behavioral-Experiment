@@ -1,0 +1,84 @@
+/* 
+    Document   : main
+    Created on : Sep 13, 2010, 1:17:30 PM
+    Author     : chadcumba
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.img-block-top{
+    width: 960px;
+    height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    overflow: hidden;
+}
+
+.img-block-inner{
+    width: 930px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.card-img{
+    float: left;
+    display: none;
+}
+
+.first-img{
+    border: 10px solid black;
+    margin-right: -930px;
+    display:block;
+}
+
+.second-img
+{
+    border: 10px solid black;
+    margin-left: 230px;
+    margin-right: -930px;
+    display:block;
+}
+
+.third-img{
+    border: 10px solid black;
+    margin-left: 460px;
+    margin-right: -930px;
+    display:block;
+}
+.fourth-img{
+    border: 10px solid black;
+    margin-left: 690px;
+    margin-right: -930px;
+    display:block;
+}
+
+.green-bg{
+    background-color: green;
+}
+
+.purple-bg{
+    background-color: purple;
+}
+
+.orange-bg{
+    background-color: orange;
+}
+
+.points-text{
+    border: none;
+}
+
