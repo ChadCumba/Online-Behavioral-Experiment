@@ -74,7 +74,8 @@ function saveTrialsAndOutcomes(){
             $(allTrials[i].myCards[3].image).attr('src').split('/').pop().split('.').shift()
         ]);
     }
-
+    
+   
     $.ajax({
         data:{
             trial_json_data   : JSON.stringify(allTrials),
