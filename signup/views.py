@@ -15,6 +15,9 @@ logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 
 @csrf_protect
 def register(request):
+    
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/instructions/pregame")
 
     if request.method == 'POST':
         form = MturkSignupForm(request.POST)
@@ -27,7 +30,7 @@ def register(request):
                 handedness = form.cleaned_data['handedness'],
                 gender = form.cleaned_data['gender']
             )
-            return HttpResponseRedirect("/accounts/created/")
+            return HttpResponseRedirect("/instructions/pregame/")
     else:
         form = MturkSignupForm()
 
