@@ -10,6 +10,11 @@ class Game(models.Model):
     so_new = models.TextField(blank=False)
     user = models.ForeignKey(User,unique=True,blank=True,null=True)
 
+    def __unicode__(self):
+        if(self.user != None):
+            return self.user.username +"'s game"
+        return 'Unassigned Game'
+
 
 class Trial(models.Model):
     game = models.ForeignKey(Game,blank=False)
