@@ -49,7 +49,10 @@ function autoSelectionTrial(cards, saveDataCallback,
                         imageClass = 'fourth-img';
                         break;
                 }
-                saveData(-1,selectedCard, points,keyStroke);
+                saveData(-1,
+                  $(currentCards[selectedCard-1].image).attr('src').split('/').pop().split('.').shift(),
+                  points,keyStroke
+                );
                 //user has not hit a button in the time limit
                 trialComplete(points, imageClass);
             }

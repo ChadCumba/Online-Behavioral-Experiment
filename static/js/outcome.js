@@ -13,7 +13,10 @@ function outcome(reaction,card,myValue,myKeyStroke,myFeature){
     this.feature = myFeature;
 
     function determineLocation(keyStroke){
-        switch(keyStroke){
+        if(keyStroke == null){
+          keyStroke = 'x';
+        }
+        switch(keyStroke.toLowerCase()){
             case 'u':
                 return 1;
             case 'i':

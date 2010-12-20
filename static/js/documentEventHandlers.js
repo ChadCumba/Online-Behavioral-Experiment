@@ -37,7 +37,7 @@ $(window).load(function () {
          var jsondata = $.ajax({
             async: false,
             global: false,
-            url: '/game/loaddata',
+            url: '/game/loaddata/',
             cache: false,
             dataType: "json"
         });

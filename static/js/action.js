@@ -51,7 +51,7 @@ function action(){
     };
     //terminate the game
     var applicationWillTerminate = function(){
-        saveData();
+        saveTrialsAndOutcomes();
         /*
          * we probably also want to send some kind of message to the user
          * maybe a clearScreen() call followed by a gameOver() call?

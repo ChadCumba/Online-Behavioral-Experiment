@@ -74,11 +74,14 @@ function trial(cards, saveDataCallback, trialCompleteCallback ){
                         points = currentCards[3].pointValue();
                         imageClass = 'fourth-img';
                         break;
+
                 }
                 //save the data in the outcomes array
 
-                saveData(reactionTime,selectedCard,points,keyStroke,
-                    $(currentCards[selectedCard].image));
+                saveData(reactionTime,
+                    $(currentCards[selectedCard].image).attr('src').split('/').pop().split('.').shift()
+                    ,points,keyStroke,$(currentCards[selectedCard].image)
+                );
                 //Show the user the points they won
                 trialComplete(points,imageClass);
             },

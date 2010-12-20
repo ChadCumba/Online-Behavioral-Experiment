@@ -52,9 +52,9 @@ function gameOver(gameOverMessage){
     //point. they should be sent back to a callback page to be saved.
 }
 
-function saveData(){
+function saveTrialsAndOutcomes(){
     $.ajaxSetup({
-        url: '/game/savedata',
+        url: '/game/savedata/',
         cache: false,
         dataType: 'script',
         type: 'POST',
@@ -64,14 +64,14 @@ function saveData(){
         }
     });
 
-    var allTrialsJson;
+    var allTrialsJson = [];
 
     for(var i = 0; i < allTrials.length; i++){
         allTrialsJson.push([
-            $(allTrials[i].myCards[0].image).attr('src').split('/')[3].split('.')[0],
-            $(allTrials[i].myCards[1].image).attr('src').split('/')[3].split('.')[0],
-            $(allTrials[i].myCards[2].image).attr('src').split('/')[3].split('.')[0],
-            $(allTrials[i].myCards[3].image).attr('src').split('/')[3].split('.')[0]
+            $(allTrials[i].myCards[0].image).attr('src').split('/').pop().split('.').shift(),
+            $(allTrials[i].myCards[1].image).attr('src').split('/').pop().split('.').shift(),
+            $(allTrials[i].myCards[2].image).attr('src').split('/').pop().split('.').shift(),
+            $(allTrials[i].myCards[3].image).attr('src').split('/').pop().split('.').shift()
         ]);
     }
 

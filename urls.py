@@ -25,5 +25,5 @@ urlpatterns = patterns('',
     (r'^surveys/', include('mturk.surveys.urls')),
     (r'^game/', include('mturk.game.urls')),
     (r'^'+ settings.GAME_MEDIA_URL +'(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': '/Users/chadcumba/Workspace/mturk/static'}),
+        {'document_root': '/Users/chadcumba/Documents/Aptana Studio 3 Workspace/mturk/static'}),
 )
