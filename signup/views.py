@@ -6,6 +6,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from mturk.signup.forms import MturkSignupForm
 from mturk.mturkprofile.models import MturkProfile
+from django.contrib import messages
+from django.contrib.auth.views import login as auth_login
+from mturk import settings
 
 import logging 
 LOG_FILENAME = '/tmp/django.log'
@@ -15,8 +18,11 @@ logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 
 @csrf_protect
 def register(request):
-    
+    """ Provide a registration form if not authenticated, 
+    redirect if authenticated.
+    """
     if request.user.is_authenticated():
+        messages.add_message(request, messages.INFO, 'You are already signed up')
         return HttpResponseRedirect("/instructions/pregame")
 
     if request.method == 'POST':
@@ -37,3 +43,12 @@ def register(request):
     return render_to_response("signup/register.html", {
         'form' : form
     }, context_instance=RequestContext(request))
+    
+
+def login(request):
+    """Provide a login form if not authenticated, display a message and 
+    redirect if authenticated"""
+    if request.user.is_authenticated():
+        messages.add_message(request, messages.INFO, 'You are already logged in')
+        return HttpResponseRedirect("/instructions/pregame")
+    return auth_login(request)

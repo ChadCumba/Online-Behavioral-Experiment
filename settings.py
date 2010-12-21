@@ -103,5 +103,4 @@ INSTALLED_APPS = (
 
 AUTH_PROFILE_MODULE = 'mturkprofile.MturkProfile'
 GAME_MEDIA_URL = 'site_media/'
-
-#LOGIN_REDIRECT_URL = '/surveys'
+LOGIN_REDIRECT_URL = '/surveys'

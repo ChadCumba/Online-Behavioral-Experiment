@@ -7,4 +7,5 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('',
      # Uncomment the next line to enable the admin:
      (r'^$', 'mturk.signup.views.register'),
+     
 )
