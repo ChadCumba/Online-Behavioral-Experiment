@@ -14,10 +14,12 @@ Developed in the Poldrack Lab at the University of Texas at Austin
       <form action="{% url mturk.signup.views.register %}" method="post">
         {% csrf_token %}
         {% for field in form %}
+            {% if not field.is_hidden %}
             <div class="fieldWrapper">
                 {{ field.errors }}
                 {{ field.label_tag }}: {{ field }}
             </div>
+            {% endif %}
         {% endfor %}
         <input type="submit">
       </form>

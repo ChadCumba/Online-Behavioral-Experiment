@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
 class MturkSignupForm(UserCreationForm):
+    
+        
     mturk_id = forms.CharField()
     
     GENDER_CHOICES = (
@@ -20,3 +22,5 @@ class MturkSignupForm(UserCreationForm):
     )
     handedness = forms.ChoiceField(choices=HANDEDNESS_CHOICES)
     age = forms.IntegerField(min_value=13,max_value=99)
+    username = forms.CharField(widget=forms.HiddenInput())
+    
