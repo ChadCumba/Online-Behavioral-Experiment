@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/chadcumba/Workspace/mturk/mturk.db',                 # Or path to database file if using sqlite3.
+        'NAME': '/Users/chad/workspace/mturk/mturk.db',                 # Or path to database file if using sqlite3.
     }
 }
 
@@ -95,10 +95,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'mturk.signup',
-    'mturk.surveys',
-    'mturk.mturkprofile',
-    'mturk.game',
+    'signup',
+    'surveys',
+    'mturkprofile',
+    'game',
 )
 
 AUTH_PROFILE_MODULE = 'mturkprofile.MturkProfile'

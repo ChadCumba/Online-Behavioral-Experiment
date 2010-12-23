@@ -4,8 +4,8 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from mturk.surveys.forms import PregameSurveyForm
-from mturk.surveys.models import PregameSurvey
+from surveys.forms import PregameSurveyForm
+from surveys.models import PregameSurvey
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError

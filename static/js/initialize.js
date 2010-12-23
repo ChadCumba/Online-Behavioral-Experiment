@@ -19,7 +19,7 @@ function initialize(){
         // 1 - AONew
         // 2 - AOTrain
         // 3 - SONew
-        // 4 - gid of the row that this all came from
+        // 4 - condition of the row that this all came from
         if(typeof(this.matlabMatrices) == "undefined"){
             throw "Matlab data not set";
         }
@@ -29,7 +29,9 @@ function initialize(){
         var AONew = 1;
         var AOTrain = 2;
         var SONew = 3;
-        var gid = 4;
+        var game_condition = 4;
+        
+        condition = this.matlabMatrices[game_condition];
 
         //load the images from the hidden div into stimulus objects
         $('img.card-img').each(function(){images.push($(this))});

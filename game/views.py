@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils import simplejson
-from mturk.game.models import Game, Outcome
+from game.models import Game, Outcome
 
 @login_required
 def Instructions(request):
@@ -56,6 +56,7 @@ def LoadGameData(request):
         'ao_new'    : simplejson.loads(game.ao_new),
         'ao_train'  : simplejson.loads(game.ao_train),
         'so_new'    : simplejson.loads(game.so_new),
+        'condition' : simplejson.loads(game.condition)
     }
 
     json = simplejson.dumps(json)

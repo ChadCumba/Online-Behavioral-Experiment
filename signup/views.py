@@ -4,14 +4,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
-from mturk.signup.forms import MturkSignupForm
-from mturk.mturkprofile.models import MturkProfile
+from signup.forms import MturkSignupForm
+from mturkprofile.models import MturkProfile
 from django.contrib import messages
 from django.contrib.auth.views import login as auth_login
 from django.contrib.auth import login as login_method
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from mturk import settings
+import settings
 
 import logging 
 LOG_FILENAME = '/tmp/django.log'

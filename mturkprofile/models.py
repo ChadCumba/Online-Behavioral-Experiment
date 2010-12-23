@@ -23,3 +23,10 @@ class MturkProfile(models.Model):
 
         if self.handedness is not 'R' and self.handedness is not 'L':
             raise ValidationError('Must be either right or left handed')
+
+    def __unicode__(self):
+        if self.user is not None:
+            if self.user.username is not None:
+                return self.user.username
+        return 'Unassigned Profile'
+        

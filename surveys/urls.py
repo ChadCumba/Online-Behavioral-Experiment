@@ -6,5 +6,5 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
      # Uncomment the next line to enable the admin:
-     (r'first/$', 'mturk.surveys.views.PregameSurveyView'),
+     (r'first/$', 'surveys.views.PregameSurveyView'),
 )

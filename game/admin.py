@@ -4,5 +4,7 @@
 from game.models import Game, Outcome
 from django.contrib import admin
 
-admin.site.register(Game)
+class GameAdmin(admin.ModelAdmin):
+    list_display=('__unicode__','game_complete','score')
+admin.site.register(Game, GameAdmin)
 admin.site.register(Outcome)

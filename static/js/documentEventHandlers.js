@@ -50,6 +50,7 @@ $(window).load(function () {
         matlabMatrices.push(gameobjects.ao_new);
         matlabMatrices.push(gameobjects.ao_train);
         matlabMatrices.push(gameobjects.so_new);
+        matlabMatrices.push(gameobjects.condition)
 
         //this would be better implemented in the signal slot design pattern
         /*

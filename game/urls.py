@@ -5,8 +5,8 @@
 from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
-    (r'^instructions/$', 'mturk.game.views.Instructions'),
-    (r'^play/$','mturk.game.views.Play'),
-    (r'^loaddata/$', 'mturk.game.views.LoadGameData'),
-    (r'^savedata/$', 'mturk.game.views.SaveGameData'),
+    (r'^instructions/$', 'game.views.Instructions'),
+    (r'^play/$','game.views.Play'),
+    (r'^loaddata/$', 'game.views.LoadGameData'),
+    (r'^savedata/$', 'game.views.SaveGameData'),
 )

@@ -11,7 +11,7 @@ Developed in the Poldrack Lab at the University of Texas at Austin
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-<form method="post" action="{% url mturk.signup.views.login %}">
+<form method="post" action="{% url signup.views.login %}">
 {% csrf_token %}
 <table>
 <tr>

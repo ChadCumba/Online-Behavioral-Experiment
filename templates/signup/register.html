@@ -11,7 +11,7 @@ Developed in the Poldrack Lab at the University of Texas at Austin
 
 {% block content %}
       <h1>Create an account</h1>
-      <form action="{% url mturk.signup.views.register %}" method="post">
+      <form action="{% url signup.views.register %}" method="post">
         {% csrf_token %}
         {% for field in form %}
             {% if not field.is_hidden %}
