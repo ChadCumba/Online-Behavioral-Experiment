@@ -30,37 +30,6 @@ $(document).keydown(function(event){
 //this will only begin executing once all the images have loaded
 //we need to wait to ensure that all graphics are up
 $(window).load(function () {
-        //here we create a locking AJAX call to get the JSON objects that
-        //define the parameters of the game
-        //Since it's blocking it should probably be called a JAX call ;]
-        //actually it's not really using XML either.
-         var jsondata = $.ajax({
-            async: false,
-            global: false,
-            url: '/game/loaddata/',
-            cache: false,
-            dataType: "json"
-        });
-
-        var gameobjects = $.parseJSON(jsondata.responseText);
-
-
-        var matlabMatrices = [];
-        matlabMatrices.push(gameobjects.game_json);
-        matlabMatrices.push(gameobjects.ao_new);
-        matlabMatrices.push(gameobjects.ao_train);
-        matlabMatrices.push(gameobjects.so_new);
-        matlabMatrices.push(gameobjects.condition)
-
-        //this would be better implemented in the signal slot design pattern
-        /*
-         * Here we hand the initialize objects the matrices, and set it's state
-         */
-        initialize.prototype.matlabMatrices = matlabMatrices;
-        initialize.prototype.gameLoaded = true;
-        initialize.prototype.gameInitialized = false;
-
-
-        $('p.loading-text').html('Press spacebar to continue');
+        loadData();
     }
 );

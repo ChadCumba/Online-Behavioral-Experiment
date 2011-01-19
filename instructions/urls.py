@@ -7,4 +7,5 @@ from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
     (r'^pregame/$', 'instructions.views.Pregame'),
+    (r'^ingameinstructions/$', 'instructions.views.LoadInstructions'),
 )

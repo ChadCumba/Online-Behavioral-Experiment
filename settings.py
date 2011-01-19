@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'surveys',
     'mturkprofile',
     'game',
+    'instructions',
 )
 
 AUTH_PROFILE_MODULE = 'mturkprofile.MturkProfile'

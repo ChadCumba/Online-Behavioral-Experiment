@@ -32,7 +32,8 @@ def Play(request):
     js = ['jquery-1.4.2.min.js', 'action.js', 'autoSelectionTrial.js', 'countdown.js',
         'documentEventHandlers.js', 'experimentDisplayDrivers.js','initialize.js',
         'instruction.js', 'json_parse.js',
-        'outcome.js', 'play-game.js','stimulus.js','trial.js','trialsConstruction.js']
+        'outcome.js', 'play-game.js','stimulus.js','trial.js',
+        'trialsConstruction.js', 'loadData.js']
 
     js = ["/" + settings.GAME_MEDIA_URL + "js/" + file for file in js]
 
