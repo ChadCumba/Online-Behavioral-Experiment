@@ -1,0 +1,87 @@
+<!--
+Chad Cumba
+Chad.Cumba@mail.utexas.edu
+Developed in the Poldrack Lab at the University of Texas at Austin
+-->
+{% extends "generic/base.html" %}
+
+{% block content %} 
+    <h2>Informed Consent to Participate in Research
+The University of Texas at Austin
+</h2>
+<p>
+You have been invited to participate in a behavioral study of human brain function via the Amazon Mechanical Turk. This form provides you with information about the study. Please read the information below before deciding whether or not to take part. Your participation is entirely voluntary and you can refuse to participate without penalty but if you do so you will not receive any payment.
+</p>
+<h3>
+Title of Research Study: Neuroimaging of cognitive function
+  </h3>
+<p>  
+<b>Principal Investigator(s):</b> Russell Poldrack, Ph.D, Imaging Research Center, (512)-232-9504
+</p>  
+<p>
+<b>Funding source:</b>  UT Austin, James S. McDonnell Foundation, Office of Naval Research
+</p>
+
+<p>
+<b>What is the purpose of this study?</b> The purpose of the main study is to try to identify how different brain systems work together to support mental function. As a volunteer, you have been asked to participate in this study because your results may help us to understand brain anatomy/functioning and cognitive processes more fully.  
+</p> 
+<p>
+<b>What will be done if you take part in this research study?</b>  If you agree to be in this study, you will need to participate in one testing session.
+</p>
+<p>
+During this session, you will view different visual stimuli and/or hear different auditory stimuli, and make judgments about them by pressing buttons. You may also be asked to complete several brief questionnaires.
+</p>  
+<p>
+<b>The Project Duration is:</b> 30-60 minutes
+</p> 
+<p>
+<b>Approximate Number of Participants:</b> 1200
+</p>  
+<p>
+<b>What are the possible discomforts and risks? </b>
+The risks of participating in this study are the same risks encountered in normal daily life.
+</p> 
+<p>
+<b>What are the possible benefits to you or to others?</b> There will be no direct benefits to subjects associated with participation. Many people find the experience to be an exciting educational opportunity to learn how psychological research is conducted. 
+</p> 
+<p>
+<b>If you choose to take part in this study, will it cost you anything?</b>  There are no costs to you for participating as a test subject.  
+</p> 
+<p>
+<b>Will you receive compensation for your participation in this study?</b>  You will receive check one 1 dollar per session for your participation.  In addition, you may be paid for your performance on some of the tasks, up to a maximum of $5 extra per testing session. These potential performance bonuses will only affect you compensation for this study, and you will not be able to lose any money from your previous balance in the Amazon system.
+</p>
+<p>
+<b>What if you are injured because of the study?</b> Many forms of research involve some risk of injury. If any complications arose, the researchers would assist you by referring you to appropriate medical practitioners, but the University has no program or plan to provide treatment for research related injury or payment in the event of a medical problem. In the unlikely event of a research related injury, please contact the principal investigator.   
+ </p> 
+<p>
+<b>If you do not want to take part in this study, what other options are available to you?</b>  Your participation in this study is entirely voluntary. You may refuse to participate or withdraw at any time without penalty by closing the browser window or by not completing the consent and tasks within the allotted time, but if you do so you will not receive any payment.
+</p>  
+<p><b>
+How can you withdraw from this research study and who should you call if you have questions?  
+</b></p>  
+<p><b>
+If you wish to stop your participation in this research study for any reason, you should contact the principal investigator: Russell Poldrack at (512) 232-9504. You should also call the principal investigator for any questions, concerns, or complaints about the research. You are free to withdraw your consent and stop participation in this research study at any time without penalty but if you do so you will not receive any payment. You are not waiving any legal rights because of your participation in this research study. Throughout the study, the researchers will notify you of new information that may become available and that might affect your decision to remain in the study. 
+</b></p>
+<p><b>
+If you would like to obtain information about the research study, have questions, concerns, complaints or wish to discuss problems about a research study with someone unaffiliated with the study, please contact the IRB Office at (512) 471-8871 or Jody Jensen, Ph.D., Chair, The University of Texas at Austin Institutional Review Board for the Protection of Human Subjects at (512) 232- 2685. Anonymity, if desired, will be protected to the extent possible. As an alternative method of contact, an email may be sent to orsc@uts.cc.utexas.edu or a letter sent to IRB Administrator, P.O. Box 7426, Mail Code A3200, Austin, TX 78713. 
+</b></p>
+<p><b>
+How will your privacy and the confidentiality of your research records be protected?  
+ </b></p>
+<p>
+Data collected during testing will be stored in a password-protected computer in the Principal Investigator’s laboratory.  All data are anonymous, we do not store your mturk ID and your responses are identified by an internal participant identification number so that any identifying information is never directly associated with the stored data. 
+</p>
+<p>
+All paperwork will be protected to the extent provided by law.  
+ </p> 
+<p><b>  
+If in the unlikely event it becomes necessary for the Institutional Review Board to review your research records, then the University of Texas at Austin will protect the confidentiality of those records to the extent permitted by law.  Your research records will not be released without your consent unless required by law or a court order. The data resulting from your participation may be made available to other researchers in the future for research purposes not detailed within this consent form. In these cases, the data will contain no identifying information that could associate you with it, or with your participation in any study.  
+</b></p>  
+
+<p id="confirmation-paragraph">
+<input type="checkbox" id="confirmed"> <label for="confirmed">I have been informed about this study’s purpose, procedures, possible benefits and risks, and voluntarily agree to participate in this study. </label>
+<br />
+<br />
+<a href="{% url game.views.Instructions %}" id="continue-link">Click here to continue</a>
+</p>
+{% endblock %}

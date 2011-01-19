@@ -4,12 +4,24 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.utils import simplejson
 from game.models import Game, Outcome
+from django.core.urlresolvers import reverse
 
 @login_required
 def Instructions(request):
     return render_to_response(
-        'generic/base.html',
-        {'title':'Instructions'}
+        'generic/base-unescaped.html',
+        {'title':'Instructions',
+         'content': """
+         <p> Thanks for participating! There are 2 parts to this game.</p>
+         <p>In part 1 you will play the game. It will be splite into 2 phases
+         that are about 15 minutes each. You will get short timed breaks every
+         few minutes, and between the 2 phases you can take a longer break 
+         (please keep it under 5 minutes).</p>
+         <p> In part 2 you will answer some questions about your experience 
+         playing the game and about your background.</p>
+         <a href="%s"> Click here to continue </a> 
+         """ % reverse(viewname='game.views.Play')
+         }
     )
 @login_required
 def Play(request):
@@ -56,7 +68,7 @@ def LoadGameData(request):
         'ao_new'    : simplejson.loads(game.ao_new),
         'ao_train'  : simplejson.loads(game.ao_train),
         'so_new'    : simplejson.loads(game.so_new),
-        'condition' : simplejson.loads(game.condition)
+        'condition' : game.condition,
     }
 
     json = simplejson.dumps(json)

@@ -31,7 +31,7 @@ Developed in the Poldrack Lab at the University of Texas at Austin
     {% endif %}
     <div id="content">
         {% block content %}
-                {{content}}
+                {{content|safe}}
         {% endblock %}
     </div>
 </body>
