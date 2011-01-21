@@ -22,3 +22,12 @@ function instruction(myText,myJqueryObject){
         jqueryObject.show();
     };
 }
+
+function instructionTrial( trialCompleteCallback, instruction){
+    breakTrial.apply(this, ['',trialCompleteCallback]);
+    this.instruction = instruction;
+    
+    this.runTrial = function() {
+        this.instruction.display();
+    }
+}

@@ -191,7 +191,7 @@ function createBreakTrials(numTrialsToBuild){
     for(var i = 0; i < numTrialsToBuild; i++){
         trials.push(
             new breakTrial(
-                $('p.instruction-text'),
+                $('p.timer-text'),
                 function(){
                     action.prototype.isBusy = false;
                     var nextAction = new action();

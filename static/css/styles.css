@@ -86,3 +86,19 @@ root {
     margin: 30px 30px 30px 30px;
 }
 
+.instruction-text{
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -450px;
+    width: 750px; 
+}
+
+.timer-text{
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -250px;
+    width: 50px;
+}

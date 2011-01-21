@@ -207,12 +207,22 @@ function initialize(){
         }
         var trials = buildTrials(deck,condition,preSelectedCards);
 
+        instructionQueue = [];
+        for(var i = 0; i < this.instructions.length; i++){
+            instructionQueue.push(
+                new instruction(
+                    this.instructions[i],
+                    $('p.instruction-text')
+                )
+            );
+        }
         
 
         initialize.prototype.gameInitialized = true;
         action.prototype.blockLength = blockSize;
         action.prototype.numberBlocks = numberBlocks;
-        action.prototype.instructions = this.instructions;
+        action.prototype.instructions = instructionQueue;
+        action.prototype.numberBreaks = 11;
         main(trials);
     }
 }

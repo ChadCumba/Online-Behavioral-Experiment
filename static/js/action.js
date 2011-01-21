@@ -22,8 +22,11 @@ function action(){
     var blockLength = this.blockLength;
     this.numberBlocks;
     var numberBlocks = this.numberBlocks;
+    this.numberBreaks;
+    var numberBreaks = this.numberBreaks;
 
-    var completedTrials = ( this.blockLength * this.numberBlocks) - this.trials.length;
+    var completedTrials = ( this.blockLength * this.numberBlocks) - 
+                            this.trials.length + this.numberBreaks;
 
     var currentBlock = Math.floor(completedTrials / this.blockLength ) + 1;
 
@@ -65,9 +68,17 @@ function action(){
             return false;
         }
         clearScreen();
-        if(positionInBlock == 1 && currentBlock <= numberBlocks
-            && (instructions.length + currentBlock) > numberBlocks ){
-            
+        /*
+         * this is really horrible design right here.
+         * instruction objects need to be converted to trial objects, or implement
+         * an action interface so they can be dropped in the queue and executed
+         * without this step. However, I've got a deadline and I'm not working
+         * overtime to fix it. 
+         * @TODO make the above changes
+         */
+        if( (completedTrials == 0 && instructions.length) == 3 ||
+            (completedTrials == trials.length && instructions.length == 2) ||
+            (completedTrials == 220 && instructions.length == 1) ){
             displayNextMessage();
         }
         else if(currentBlock > numberBlocks){

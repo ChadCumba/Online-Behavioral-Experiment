@@ -30,7 +30,8 @@
                 settings.timerCompleteCallback
             );
             
-            setTimeout('$(document).trigger("timer.is.complete");',
+            setTimeout('$(document).trigger("timer.is.complete");'
+            +'$(document).unbind("timer.is.complete");',
                 settings.time * ms_length
             );
         });
