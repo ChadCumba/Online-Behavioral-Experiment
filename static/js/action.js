@@ -25,7 +25,7 @@ function action(){
     this.numberBreaks;
     var numberBreaks = this.numberBreaks;
 
-    var completedTrials = ( this.blockLength * this.numberBlocks) - 
+    var completedTrials =  ( this.blockLength * this.numberBlocks) - 
                             this.trials.length + this.numberBreaks;
 
     var currentBlock = Math.floor(completedTrials / this.blockLength ) + 1;
@@ -76,12 +76,7 @@ function action(){
          * overtime to fix it. 
          * @TODO make the above changes
          */
-        if( (completedTrials == 0 && instructions.length) == 3 ||
-            (completedTrials == trials.length && instructions.length == 2) ||
-            (completedTrials == 220 && instructions.length == 1) ){
-            displayNextMessage();
-        }
-        else if(currentBlock > numberBlocks){
+        if(trials.length == 0){
             applicationWillTerminate();
         }
         else if(trials.length > 0){

@@ -23,6 +23,10 @@ function loadData() {
 
         var gameobjects = $.parseJSON(jsondata.responseText);
 
+        if(gameobjects.error != null){
+            alert(gameobjects.error);
+            throw "fatal error";
+        }
 
         var matlabMatrices = [];
         matlabMatrices.push(gameobjects.game_json);

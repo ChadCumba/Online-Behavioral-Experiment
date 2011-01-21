@@ -205,7 +205,7 @@ function initialize(){
             preSelectedCards = preSelectedCards.concat(
                 this.matlabMatrices[stackPrepCD].trialcardFEA[i]);
         }
-        var trials = buildTrials(deck,condition,preSelectedCards);
+        
 
         instructionQueue = [];
         for(var i = 0; i < this.instructions.length; i++){
@@ -216,7 +216,7 @@ function initialize(){
                 )
             );
         }
-        
+        var trials = buildTrials(deck,condition,preSelectedCards,instructionQueue);
 
         initialize.prototype.gameInitialized = true;
         action.prototype.blockLength = blockSize;

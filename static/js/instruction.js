@@ -29,5 +29,6 @@ function instructionTrial( trialCompleteCallback, instruction){
     
     this.runTrial = function() {
         this.instruction.display();
+        action.prototype.isBusy = false;
     }
 }

@@ -11,7 +11,7 @@
  * @param preSelectedCards - the list of cards to select for the user during
  *                           auto selection trials
  */
-function buildTrials(deck,condition,preSelectedCards){
+function buildTrials(deck,condition,preSelectedCards,instructionQueue){
 
     var cards = [];
 
@@ -43,7 +43,10 @@ function buildTrials(deck,condition,preSelectedCards){
             trials.splice(i,0,breaks.pop());
         }
     }
-
+    instructions = createInstructionTrials(instructionQueue);
+    trials.splice(0,0,instructions.shift());
+    trials.splice(126,0,instructions.shift());
+    trials.splice(232,0,instructions.shift());
     return trials;
 }
 
@@ -197,6 +200,19 @@ function createBreakTrials(numTrialsToBuild){
                     var nextAction = new action();
                     nextAction.execute();
                 }
+            )
+        );
+    }
+    return trials;
+}
+
+function createInstructionTrials(instructions){
+    var trials = [];
+    for(var i = 0; i < instructions.length; i++){
+        trials.push(
+            new instructionTrial(
+                function(){},
+                instructions[i]
             )
         );
     }

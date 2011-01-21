@@ -63,6 +63,11 @@ def LoadGameData(request):
             response = {'error': 'Game data not found'}
             json = simplejson.dumps(response)
             return HttpResponse(json, mimetype='application/json')
+    
+    if(game.game_complete()):
+        response = {'error': 'Game has already been played'}
+        json = simplejson.dumps(response)
+        return HttpResponse(json,mimetype='application/json')
 
     json = {
         'game_json' : simplejson.loads(game.game_json),
@@ -80,20 +85,21 @@ def LoadGameData(request):
 def SaveGameData(request):
     if request.method == "POST":
         outcomes = simplejson.loads(request.POST['response_json_data'])
-        current_trial = 1
-        for outcome in outcomes:
-            Outcome.objects.create(
-                reaction_time = outcome['reactionTime'],
-                selected_card = outcome['selectedCard'],
-                point_value = outcome['pointValue'],
-                key_stroke = outcome['keyStroke'],
-                card_location = outcome['cardLocation'],
-                did_user_win = outcome['didUserWin'],
-                trial_number = current_trial,
-                user = request.user
-            )
-            current_trial += 1
-        if(len(outcomes) > 0):
+        if(len(outcomes) == 240):
+            current_trial = 1
+            for outcome in outcomes:
+                Outcome.objects.create(
+                    reaction_time = outcome['reactionTime'],
+                    selected_card = outcome['selectedCard'],
+                    point_value = outcome['pointValue'],
+                    key_stroke = outcome['keyStroke'],
+                    card_location = outcome['cardLocation'],
+                    did_user_win = outcome['didUserWin'],
+                    trial_number = current_trial,
+                    user = request.user
+                )
+                current_trial += 1
+            
             saved = True
             json = simplejson.dumps(saved)
             return HttpResponse(json, mimetype='application/json')
