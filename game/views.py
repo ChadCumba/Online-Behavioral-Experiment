@@ -33,7 +33,7 @@ def Play(request):
         'documentEventHandlers.js', 'experimentDisplayDrivers.js','initialize.js',
         'instruction.js', 'json_parse.js',
         'outcome.js', 'play-game.js','stimulus.js','trial.js',
-        'trialsConstruction.js', 'loadData.js']
+        'trialsConstruction.js', 'loadData.js', 'timer.js', 'breakTrial.js']
 
     js = ["/" + settings.GAME_MEDIA_URL + "js/" + file for file in js]
 

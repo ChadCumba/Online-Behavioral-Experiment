@@ -207,21 +207,12 @@ function initialize(){
         }
         var trials = buildTrials(deck,condition,preSelectedCards);
 
-        allTrials = $.extend(true, [], trials);
-
-        var instructions = [];
-
-        for(i = 0; i <= numberBlocks; i++){
-            instructions.push(new instruction('this an instruction',
-                $('p.instruction-text'))
-            );
-        }
-        instructions = [];
+        
 
         initialize.prototype.gameInitialized = true;
         action.prototype.blockLength = blockSize;
         action.prototype.numberBlocks = numberBlocks;
-        action.prototype.instructions = instructions;
+        action.prototype.instructions = this.instructions;
         main(trials);
     }
 }

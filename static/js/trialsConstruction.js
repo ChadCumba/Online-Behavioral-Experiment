@@ -35,6 +35,14 @@ function buildTrials(deck,condition,preSelectedCards){
     }
 
     trials = trials.concat(createProbeTrialsFromCards(finalBatchSize, cards));
+    
+    breaks = createBreakTrials(11);
+    
+    for(var i = trials.length; i >= 0; i--){
+        if(breaks.length > 0 && i%20 == 0 && i != trials.length){
+            trials.splice(i,0,breaks.pop());
+        }
+    }
 
     return trials;
 }
@@ -175,5 +183,22 @@ function createProbeTrialsFromCards(numTrialsToBuild,cards){
         );
     }
 
+    return trials;
+}
+
+function createBreakTrials(numTrialsToBuild){
+    var trials = [];
+    for(var i = 0; i < numTrialsToBuild; i++){
+        trials.push(
+            new breakTrial(
+                $('p.instruction-text'),
+                function(){
+                    action.prototype.isBusy = false;
+                    var nextAction = new action();
+                    nextAction.execute();
+                }
+            )
+        );
+    }
     return trials;
 }
