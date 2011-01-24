@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     (r'^play/$','game.views.Play'),
     (r'^loaddata/$', 'game.views.LoadGameData'),
     (r'^savedata/$', 'game.views.SaveGameData'),
+    (r'^gameover/$', 'game.views.GameOver'),
 )

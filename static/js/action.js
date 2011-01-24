@@ -59,6 +59,8 @@ function action(){
          * we probably also want to send some kind of message to the user
          * maybe a clearScreen() call followed by a gameOver() call?
          */
+         clearScreen();
+         gameOver();
     }
 
     //this should be the only function that we'll need to call on this object

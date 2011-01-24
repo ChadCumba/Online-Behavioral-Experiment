@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse
@@ -107,3 +108,17 @@ def SaveGameData(request):
     saved = False
     json = simplejson.dumps(saved)
     return HttpResponse(json,mimetype='application/json')
+
+@login_required
+def GameOver(request):
+    try:
+        game = Game.objects.get(user=request.user)
+    except Game.DoesNotExist:
+        return render_to_response('base/generic.html',
+                                  {'content': 'Game Not Found'},
+                                  context_instance=RequestContext(request))
+    return render_to_response('game/gameover.html',
+        {'game':game,
+         'user':request.user},
+        context_instance=RequestContext(request))
+        

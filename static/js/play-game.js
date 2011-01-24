@@ -45,11 +45,7 @@ function main(trials){
 
 //this can send whatever message you like to the user
 function gameOver(gameOverMessage){
-    $('p.results').show();
-    $('p.results').html(gameOverMessage);
-    //@TODO: save data should go here
-    //the outcome array is full of data here
-    //point. they should be sent back to a callback page to be saved.
+    window.location.href="";
 }
 
 function saveTrialsAndOutcomes(){

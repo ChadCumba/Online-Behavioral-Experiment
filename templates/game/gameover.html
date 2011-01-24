@@ -1,0 +1,13 @@
+{% extends "generic/base.html" %}
+
+{% block content %}
+    {{content}}
+    <p>
+        You are finished! You made {{game.score}} points. Your mturk code is 
+        {{user.username}}#{{user.id}}, we will process your payment once we verify that you
+        completed the study correctly. 
+    </p>
+    <p>
+        Thanks for participating!
+    </p>
+{% endblock %}
