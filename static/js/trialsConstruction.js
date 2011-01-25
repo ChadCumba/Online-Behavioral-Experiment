@@ -51,6 +51,9 @@ function buildTrials(deck,condition,preSelectedCards,instructionQueue){
 }
 
 /*
+ * @TODO The createXXX functions now need to be refactored as a factory 
+ * class, instead of individual functions. This would also be a good time to 
+ * setup the observer pattern in the trial callbacks.
  * @param numTrialsToBuild - the number of trials to build
  * @param cards - a reference to an Array of cards
  */
@@ -137,13 +140,23 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
             },
             function(points,locationClass){
 
+                
+                //set red border here
+                $('img:visible').each(
+                    function(index){
+                            if($(this).hasClass('selected') == false){
+                                $(this).selected({'color':'red'});
+                            }
+                    }
+                );
+
                 if(points > 0){
                         setTimeout(
                         "$('img.win-img').addClass('" +locationClass + "').show().selected();"
-                        ,1001);
+                        ,2001);
                         setTimeout(
                         "$('img.win-img').removeClass('" + locationClass + "').deselected().hide();",
-                        1999
+                        3499
                         );
                     } else{
                         //if they selected the wrong card
@@ -151,18 +164,18 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                             setTimeout("$('img:visible.selected').deselected().hide()", 1000);
                             setTimeout(
                             "$('img.lose-img').addClass('" +locationClass + "').show().selected();"
-                            ,1001);
+                            ,2001);
                             setTimeout(
                             "$('img.lose-img').removeClass('" + locationClass + "').deselected().hide();",
-                            1999
+                            3499
                             );
                         }
                     }
-                setTimeout("$('img:visible.selected').deselected()", 1000);
-                setTimeout("$('img:visible').deselected().hide()", 2000);
+                
+                setTimeout("$('img:visible').deselected().hide()", 3500);
                 //execute the next action
                 setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
-                       , 2500);
+                       , 4000);
             },
             preSelectedCards.shift())
         );
@@ -186,15 +199,31 @@ function createProbeTrialsFromCards(numTrialsToBuild,cards){
                      outcomes.push(new outcome(reactionTime,selectedCard, points,
                         keyStroke));
                 },
-                function(points,locationClass){
+                function(points,locationClass, reactionTime){
+                    
+                    var timeOffset = 0;
+                    if(reactionTime > 0){
+                        timeOffset = 1000 - reactionTime;
+                    }else{
+                        timeOffset = 1000;
+                    }
+                    //set red border here
+                    $('img:visible').each(
+                        function(index){
+                                if($(this).hasClass('selected') == false){
+                                    $(this).selected({'color':'red'});
+                                }
+                        }
+                    );
+                    
                     //Hide the text on a delay.
                     //Reset the images
-                    setTimeout("$('img:visible.selected').deselected()", 1000);
-                    setTimeout("$('img:visible.selected').hide()",1000);
-                    setTimeout("$('img:visible').hide()", 2000);
+                    setTimeout("$('img:visible.selected').deselected()", 2000);
+                    
+                    setTimeout("$('img:visible').hide()", 3500);
                     //execute the next action
                     setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
-                           , 2500);
+                           , 5000 - timeOffset);
                 }
             )
         );
