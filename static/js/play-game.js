@@ -45,12 +45,12 @@ function main(trials){
 
 //this can send whatever message you like to the user
 function gameOver(gameOverMessage){
-    window.location.href="";
+    window.location.href="/mturk/game/gameover";
 }
 
 function saveTrialsAndOutcomes(){
     $.ajaxSetup({
-        url: '/game/savedata/',
+        url: '/mturk/game/savedata/',
         cache: false,
         dataType: 'script',
         type: 'POST',

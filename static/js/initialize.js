@@ -290,17 +290,17 @@ function setDeckByCondition(condition,AOTrain,AONew,SONew,stacksCD){
             break;
         case 4:
             for(j = 0; j < numberLocations; j++){
-                deck[j].concat(AOTrain[j].slice(firstBatchSize));
+                deck[j] = deck[j].concat(AOTrain[j].slice(firstBatchSize));
             }
             break;
         case 5:
             for(j = 0; j < numberLocations; j++){
-                deck[j].concat(AONew[j].slice(firstBatchSize));
+                deck[j] = deck[j].concat(AONew[j].slice(firstBatchSize));
             }
             break;
         case 6:
             for(j = 0; j < numberLocations; j++){
-               deck[j].concat(SONew[j].slice(firstBatchSize));
+                deck[j] = deck[j].concat(SONew[j].slice(firstBatchSize));
             }
 
             break;

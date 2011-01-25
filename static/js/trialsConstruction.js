@@ -63,43 +63,57 @@ function createRegularTrialsFromCards(numTrialsToBuild,cards){
                      outcomes.push(new outcome(reactionTime,selectedCard, points,
                         keyStroke));
                 },
-                function(points,locationClass){
+                function(points,locationClass, reactionTime){
+					
+					var timeOffset = 0;
+					if(reactionTime > 0){
+						timeOffset = 1000 - reactionTime;
+					}else{
+						timeOffset = 1000;
+					}
+					//set red border here
+					$('img:visible').each(
+						function(index){
+								if($(this).hasClass('selected') == false){
+									$(this).selected({'color':'red'});
+								}
+						}
+					);
 
                     //if they selected the right card
                     if(points > 0){
                         setTimeout(
                         "$('img.win-img').addClass('" +locationClass + "').show().selected();"
-                        ,1001);
+                        ,2001 );
                         setTimeout(
                         "$('img.win-img').removeClass('" + locationClass + "').deselected().hide();",
-                        1999
+                        3499
                         );
-                    } else{
+                    } else {
                         //if they selected the wrong card
-                        if($('img:visible.selected').length > 0){
-                            setTimeout("$('img:visible.selected').deselected().hide()", 1000);
+                        if(reactionTime > 0){
                             setTimeout(
                             "$('img.lose-img').addClass('" +locationClass + "').show().selected();"
-                            ,1001);
+                            ,2001);
                             setTimeout(
                             "$('img.lose-img').removeClass('" + locationClass + "').deselected().hide();",
-                            1999
+                            3499
                             );
                         }else{
                             //if they selected no card at all
-                            setTimeout("$('img').hide()", 1000);
+                            setTimeout("$('img').hide()", 2000);
                             $('img.lose-img').clone().addClass('clone first-img').appendTo('div.img-block-inner').hide()
                             .clone().removeClass('first-img').addClass('second-img').appendTo('div.img-block-inner')
                             .clone().removeClass('second-img').addClass('third-img').appendTo('div.img-block-inner')
                             .clone().removeClass('third-img').addClass('fourth-img').appendTo('div.img-block-inner');
-                            setTimeout("$('.clone').show();",1001);
-                            setTimeout("$('.clone').remove();", 2000);
+                            setTimeout("$('.clone').show().selected({'color':'red'});",2001);
+                            setTimeout("$('.clone').remove();", 3501);
                         }
                     }
-                    setTimeout("$('img:visible').deselected().hide()", 2000);
+                    setTimeout("$('img:visible').deselected().hide()", 3500);
                     //execute the next action
                     setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
-                           , 2500);
+                           , 5000 - timeOffset);
                 }
             )
         );

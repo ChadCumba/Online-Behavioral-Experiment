@@ -6,7 +6,7 @@
         
         var defaults = {
             trial: {},
-            time: 3,
+            time: 1,
             keys: new Array(),
             success: function(keyStroke) { return keyStroke;},
             fail: function(keyStroke) { return keyStroke;}

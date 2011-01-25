@@ -2,6 +2,7 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from signup.forms import MturkSignupForm
@@ -13,10 +14,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 import settings
 
-import logging 
-LOG_FILENAME = '/tmp/django.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
-
 
 
 @csrf_protect
@@ -27,7 +24,7 @@ def register(request):
     """
     if request.user.is_authenticated():
         messages.add_message(request, messages.INFO, 'You are already signed up')
-        return HttpResponseRedirect("/instructions/pregame")
+        return HttpResponseRedirect(reverse('instructions.views.Pregame'))
 
     if request.method == 'POST':
         user_count = User.objects.all().count()
@@ -56,7 +53,7 @@ def register(request):
                         +'with your username and password at this page.')
                     messages.add_message(request, messages.INFO, 'Successfully created and logged in user: '
                         + new_user.username)
-                    return HttpResponseRedirect("/instructions/pregame/")
+                    return HttpResponseRedirect(reverse('instructions.views.Pregame'))
     else:
         form = MturkSignupForm()
 
@@ -70,5 +67,5 @@ def login(request):
     redirect if authenticated"""
     if request.user.is_authenticated():
         messages.add_message(request, messages.INFO, 'You are already logged in')
-        return HttpResponseRedirect("/instructions/pregame")
+        return HttpResponseRedirect(reverse('instructions.views.Pregame'))
     return auth_login(request)

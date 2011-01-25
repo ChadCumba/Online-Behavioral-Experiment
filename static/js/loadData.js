@@ -6,7 +6,7 @@ function loadData() {
         var jsondata = $.ajax({
             async: false,
             global: false,
-            url: '/game/loaddata/',
+            url: '/mturk/game/loaddata/',
             cache: false,
             dataType: "json"
         });
@@ -14,7 +14,7 @@ function loadData() {
         var instructionData = $.ajax({
             async: false,
             global: false,
-            url: '/instructions/ingameinstructions',
+            url: '/mturk/instructions/ingameinstructions',
             cache: false,
             dataType: "json",
         });

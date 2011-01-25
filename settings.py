@@ -12,8 +12,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/chadcumba/Workspace/mturk/mturk.db',                 # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'django_mturk_cds',
+		'USER': 'django_mturk_cds',
+		'PASSWORD': '2r1s65U',
+		'HOST': '',
+		'PORT': '',
     }
 }
 
@@ -52,7 +56,7 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = 'http://euphoria.clm.utexas.edu/mturk/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n@5)_!6dj1ridez1^0usrrj!k5@!)+vej-sqgjspo@6h9pbr4s'
@@ -103,5 +107,5 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = 'mturkprofile.MturkProfile'
-GAME_MEDIA_URL = 'site_media/'
+GAME_MEDIA_URL = 'mturk/static/'
 LOGIN_REDIRECT_URL = '/surveys'

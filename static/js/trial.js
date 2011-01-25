@@ -83,7 +83,7 @@ function trial(cards, saveDataCallback, trialCompleteCallback ){
                     ,points,keyStroke,$(currentCards[selectedCard].image)
                 );
                 //Show the user the points they won
-                trialComplete(points,imageClass);
+                trialComplete(points,imageClass,reactionTime);
             },
             fail: function(keyStroke) {
 

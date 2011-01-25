@@ -22,7 +22,5 @@ urlpatterns = patterns('',
         {'template_name':'signup/logout.html'}),
     (r'^surveys/', include('surveys.urls')),
     (r'^game/', include('game.urls')),
-    (r'^'+ settings.GAME_MEDIA_URL +'(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.CURRENT_DIR + '/static'}),
     (r'^instructions/', include('instructions.urls')),
 )
