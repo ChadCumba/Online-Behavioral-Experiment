@@ -114,6 +114,7 @@ function createRegularTrialsFromCards(numTrialsToBuild,cards){
                         }
                     }
                     setTimeout("$('img:visible').deselected().hide()", 3500);
+                    setTimeout("$('img').removeClass('selected');", 3501);
                     //execute the next action
                     setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
                            , 5000 - timeOffset);
