@@ -211,8 +211,7 @@ function createProbeTrialsFromCards(numTrialsToBuild,cards){
                     
                     //Hide the text on a delay.
                     //Reset the images
-                    setTimeout("$('img:visible.selected').deselected()", 2000);
-                    
+                                       
                     setTimeout("$('img:visible').hide()", 3500);
                     //execute the next action
                     setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
