@@ -39,7 +39,8 @@ def LoadInstructions(request):
             return HttpResponse(json, mimetype='application/json')
 
     
-    instructions = Instruction.objects.order_by('wieght').filter(condition=1)
+    instructions = Instruction.objects.order_by('wieght').filter(
+                    condition=game.condition)
     web_instructions = []
     for instruction in instructions:
         web_instructions.append(instruction.text)
