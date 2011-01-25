@@ -102,15 +102,6 @@ function createRegularTrialsFromCards(numTrialsToBuild,cards){
                             "$('img.lose-img').removeClass('" + locationClass + "').deselected().hide();",
                             3499
                             );
-                        }else{
-                            //if they selected no card at all
-                            setTimeout("$('img').hide()", 2000);
-                            $('img.lose-img').clone().addClass('clone first-img').appendTo('div.img-block-inner').hide()
-                            .clone().removeClass('first-img').addClass('second-img').appendTo('div.img-block-inner')
-                            .clone().removeClass('second-img').addClass('third-img').appendTo('div.img-block-inner')
-                            .clone().removeClass('third-img').addClass('fourth-img').appendTo('div.img-block-inner');
-                            setTimeout("$('.clone').show().selected({'color':'red'});",2001);
-                            setTimeout("$('.clone').remove();", 3501);
                         }
                     }
                     setTimeout("$('img:visible').deselected().hide()", 3500);
@@ -139,13 +130,14 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                  outcomes.push(new outcome(reactionTime,selectedCard, points,
                     keyStroke));
             },
-            function(points,locationClass){
+            function(points,locationClass, userResponded){
 
                 
                 //set red border here
                 $('img:visible').each(
                     function(index){
-                            if($(this).hasClass('selected') == false){
+                            if($(this).hasClass('selected') == false || 
+                                !userResponded){
                                 $(this).selected({'color':'red'});
                             }
                     }
@@ -161,7 +153,7 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                         );
                     } else{
                         //if they selected the wrong card
-                        if($('img:visible.selected').length > 0){
+                        if(userResponded){
                             
                             setTimeout(
                             "$('img.lose-img').addClass('" +locationClass + "').show().selected();"

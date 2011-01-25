@@ -19,19 +19,36 @@ function autoSelectionTrial(cards, saveDataCallback,
         currentCards = this.myCards;
         //these are now card objects
         this.displayTrial(this.myCards);
+        
+        
 
-        //bind the passed in params into the local closure
+        
         trialComplete = this.trialComplete;
         saveData = this.saveData;
         selectedCard = this.preselectedCard;
+        $(currentCards[selectedCard-1].image).selected({'color':'blue'});
+        
+        var correctKey = "";
+        switch(selectedCard-1){
+            case 0:
+                correctKey = "u";
+                break;
+            case 1:
+                correctKey = "i";
+                break;
+            case 2:
+                correctKey = "o";
+                break;
+            case 3:
+                correctKey = "p";
+                break;
+        }
 
         //jquery callback to the countdown quiz
         $('div.img-block-inner').countdown({
-            keys: [],
+            keys: [correctKey],
             success: function(keyStroke, reactionTime, trial){
-            },
-            fail: function(keyStroke) {
-
+                
                 $(currentCards[selectedCard-1].image).selected();
                 var points = currentCards[selectedCard-1].pointValue();
                 
@@ -54,7 +71,16 @@ function autoSelectionTrial(cards, saveDataCallback,
                   points,keyStroke
                 );
                 //user has not hit a button in the time limit
-                trialComplete(points, imageClass);
+                trialComplete(points, imageClass, true);
+            },
+            fail: function(keyStroke) {
+
+                saveData(-1,
+                  -1,
+                  -5,keyStroke
+                );
+                //user has not hit a button in the time limit
+                trialComplete(-5, 'first-img', false);
             }
         });
   }
