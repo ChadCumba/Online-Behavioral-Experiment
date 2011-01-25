@@ -162,7 +162,7 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                     } else{
                         //if they selected the wrong card
                         if($('img:visible.selected').length > 0){
-                            setTimeout("$('img:visible.selected').deselected().hide()", 1000);
+                            
                             setTimeout(
                             "$('img.lose-img').addClass('" +locationClass + "').show().selected();"
                             ,2001);
@@ -174,7 +174,6 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                     }
                 
                 setTimeout("$('img:visible').deselected().hide();", 3500);
-                setTimeout("$('img').removeClass('selected');", 3501);
                 //execute the next action
                 setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
                        , 4000);
