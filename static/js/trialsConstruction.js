@@ -172,8 +172,8 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
                         }
                     }
                 
-                setTimeout("$('img:visible').deselected().hide()", 3500);
-                setTimeout("$('img').deselected()", 3501);
+                setTimeout("$('img:visible').deselected().hide();", 3500);
+                setTimeout("$('img').removeClass('selected');", 3501);
                 //execute the next action
                 setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
                        , 4000);
