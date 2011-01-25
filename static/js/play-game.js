@@ -54,6 +54,7 @@ function saveTrialsAndOutcomes(){
         cache: false,
         dataType: 'script',
         type: 'POST',
+        async: false,
         complete: function(XMLHttpRequest, textStatus){
             //probably need some kind of error handling here
             //in case textStatus is something bad
