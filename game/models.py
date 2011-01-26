@@ -34,6 +34,18 @@ class Game(models.Model):
             outcomes = Outcome.objects.filter(user=self.user)
             return len(outcomes) == self.length()
         return False
+    
+    def cash_amount(self):
+        if self.game_complete():
+            amount = float(self.score()) / 700
+            amount = round(amount, 2)
+            if(amount < 0):
+                amount = 0
+            amount = amount + 1
+            if(amount > 5):
+                amount = 5
+            return amount
+        return 0
 
 class Trial(models.Model):
     game = models.ForeignKey(Game,blank=False)
