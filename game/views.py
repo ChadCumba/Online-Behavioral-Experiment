@@ -14,7 +14,7 @@ def Instructions(request):
         {'title':'Instructions',
          'content': """
          <p> Thanks for participating! There are 2 parts to this game.</p>
-         <p>In part 1 you will play the game. It will be splite into 2 phases
+         <p>In part 1 you will play the game. It will be split into 2 phases
          that are about 15 minutes each. You will get short timed breaks every
          few minutes, and between the 2 phases you can take a longer break 
          (please keep it under 5 minutes).</p>
