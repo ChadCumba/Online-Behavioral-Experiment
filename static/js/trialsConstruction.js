@@ -213,6 +213,8 @@ function createProbeTrialsFromCards(numTrialsToBuild,cards){
                     //Reset the images
                                        
                     setTimeout("$('img:visible').hide()", 3500);
+                    setTimeout("$('img').deselected().removeClass('selected')",
+                                3501)   
                     //execute the next action
                     setTimeout("action.prototype.isBusy = false; var nextAction = new action(); nextAction.execute();"
                            , 5000 - timeOffset);
