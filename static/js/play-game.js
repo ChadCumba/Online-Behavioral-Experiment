@@ -45,7 +45,7 @@ function main(trials){
 
 //this can send whatever message you like to the user
 function gameOver(gameOverMessage){
-    window.location.href="/mturk/game/gameover";
+    window.location.href="/mturk/surveys/postgame";
 }
 
 function saveTrialsAndOutcomes(){

@@ -4,7 +4,7 @@
 
 from django import forms
 
-class PregameSurveyForm(forms.Form):
+class PostgameSurveyForm(forms.Form):
     what_i_learned = forms.CharField(
         widget=forms.widgets.Textarea,
         label="For the betting game, what did you learn? \

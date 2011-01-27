@@ -4,21 +4,22 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from surveys.forms import PregameSurveyForm
-from surveys.models import PregameSurvey
-from django.contrib.auth.decorators import login_required
+from surveys.forms import PostgameSurveyForm
+from surveys.models import PostgameSurvey
+from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
+from django.conf import settings
 
 @csrf_protect
 @login_required
-def PregameSurveyView(request):
+def PostgameSurveyView(request):
 
     if request.method == 'POST':
-        form = PregameSurveyForm(request.POST)
+        form = PostgameSurveyForm(request.POST)
         if form.is_valid():
             try:
-                survey = PregameSurvey.objects.create(
+                survey = PostgameSurvey.objects.create(
                     what_i_learned = form.cleaned_data['what_i_learned'],
                     play_games = form.cleaned_data['play_games'],
                     past_gaming = form.cleaned_data['past_gaming'],
@@ -28,11 +29,17 @@ def PregameSurveyView(request):
             except IntegrityError:
                 raise PermissionDenied()
             
-            return HttpResponseRedirect('survey/complete')
+            return HttpResponseRedirect(reverse('game.views.GameOver'))
     else:
-        form = PregameSurveyForm()
+        survey = PostgameSurvey.objects.filter(user=request.user)
+        if(len(survey) > 0):
+            return HttpResponseRedirect(reverse('game.views.GameOver'))
+        styles = ['survey.css']
+        styles = ["/" + settings.GAME_MEDIA_URL + "css/" + sheet for sheet in styles]
+        form = PostgameSurveyForm()
     return render_to_response('survey/generic_survey.html', {
         'form' : form,
-        'title' : 'Pregame Survey',
+        'title' : 'Postgame Survey',
+        'styles' : styles,
         },
         context_instance=RequestContext(request))

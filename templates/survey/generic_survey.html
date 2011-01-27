@@ -9,7 +9,7 @@ Developed in the Poldrack Lab at the University of Texas at Austin
 
 {% block content %}
       <h1>{{title}}</h1>
-      <form action="{% url surveys.views.PregameSurveyView %}" method="post">
+      <form action="{% url surveys.views.PostgameSurveyView %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit">
