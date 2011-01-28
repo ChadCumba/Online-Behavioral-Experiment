@@ -11,6 +11,7 @@ class Game(models.Model):
     ao_train = models.TextField(blank=False)
     so_new = models.TextField(blank=False)
     condition = models.IntegerField(blank=True)
+    timestamp = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User,unique=True,blank=True,null=True)
 
     def length(self):
@@ -62,4 +63,5 @@ class Outcome(models.Model):
     card_location = models.IntegerField()
     did_user_win = models.BooleanField()
     trial_number = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, unique=False)
