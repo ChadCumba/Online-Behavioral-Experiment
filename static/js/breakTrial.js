@@ -6,7 +6,7 @@ function breakTrial(htmlNode,trialCompleteCallback){
     this.runTrial = function() {
         $(this.htmlNode).timer(
             {
-                time:5,
+                time:10,
                 timerCompleteCallback: trialCompleteCallback,
             }
         ).show();
