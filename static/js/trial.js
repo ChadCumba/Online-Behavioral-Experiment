@@ -80,14 +80,14 @@ function trial(cards, saveDataCallback, trialCompleteCallback ){
 
                 saveData(reactionTime,
                     $(currentCards[selectedCard].image).attr('src').split('/').pop().split('.').shift()
-                    ,points,keyStroke,$(currentCards[selectedCard].image)
+                    ,points,keyStroke,currentCards[selectedCard].probability
                 );
                 //Show the user the points they won
                 trialComplete(points,imageClass,reactionTime);
             },
             fail: function(keyStroke) {
 
-                saveData(-1,-1,-5,'x', $(currentCards[0].image));
+                saveData(-1,-1,-5,'x','no selection');
                 //user has not hit a button in the time limit
                 trialComplete(-5, 'first-img');
             }

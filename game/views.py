@@ -86,7 +86,7 @@ def LoadGameData(request):
 def SaveGameData(request):
     if request.method == "POST":
         outcomes = simplejson.loads(request.POST['response_json_data'])
-        if(len(outcomes) == 240):
+        if(len(outcomes) == 240 or True):
             current_trial = 1
             for outcome in outcomes:
                 Outcome.objects.create(
@@ -97,6 +97,7 @@ def SaveGameData(request):
                     card_location = outcome['cardLocation'],
                     did_user_win = outcome['didUserWin'],
                     trial_number = current_trial,
+                    probability = outcome['probability'],
                     user = request.user
                 )
                 current_trial += 1

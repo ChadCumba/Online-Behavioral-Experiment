@@ -64,4 +64,5 @@ class Outcome(models.Model):
     did_user_win = models.BooleanField()
     trial_number = models.IntegerField()
     timestamp = models.DateTimeField(auto_now=True)
+    probability = models.CharField(max_length=255)
     user = models.ForeignKey(User, unique=False)

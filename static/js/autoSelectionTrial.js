@@ -66,9 +66,9 @@ function autoSelectionTrial(cards, saveDataCallback,
                         imageClass = 'fourth-img';
                         break;
                 }
-                saveData(-1,
+                saveData(reactionTime,
                   $(currentCards[selectedCard-1].image).attr('src').split('/').pop().split('.').shift(),
-                  points,keyStroke
+                  points,keyStroke, currentCards[selectedCard-1].probability
                 );
                 //user has not hit a button in the time limit
                 trialComplete(points, imageClass, true);
@@ -77,7 +77,7 @@ function autoSelectionTrial(cards, saveDataCallback,
 
                 saveData(-1,
                   -1,
-                  -5,keyStroke
+                  -5,keyStroke, 'no selection'
                 );
                 //user has not hit a button in the time limit
                 trialComplete(-5, 'first-img', false);

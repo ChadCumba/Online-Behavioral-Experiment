@@ -5,12 +5,12 @@
  */
 
 
-function outcome(reaction,card,myValue,myKeyStroke,myFeature){
+function outcome(reaction,card,myValue,myKeyStroke,myProbability){
     this.reactionTime = reaction;
     this.selectedCard = card;
     this.pointValue = myValue;
     this.keyStroke = myKeyStroke;
-    this.feature = myFeature;
+    this.probability = myProbability;
 
     function determineLocation(keyStroke){
         if(keyStroke == null){

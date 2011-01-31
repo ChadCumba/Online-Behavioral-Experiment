@@ -62,9 +62,9 @@ function createRegularTrialsFromCards(numTrialsToBuild,cards){
     for(var i = 0; i < numTrialsToBuild; i++){
         trials.push(
             new trial(cards.shift(),
-                function(reactionTime,selectedCard,points,keyStroke){
+                function(reactionTime,selectedCard,points,keyStroke, probability){
                      outcomes.push(new outcome(reactionTime,selectedCard, points,
-                        keyStroke));
+                        keyStroke,probability));
                 },
                 function(points,locationClass, reactionTime){
 					
@@ -126,9 +126,9 @@ function createAutoSelectTrialsFromCards(numTrialsToBuild,cards,preSelectedCards
 
     for(var i = 0; i< numTrialsToBuild; i++){
         trials.push(new autoSelectionTrial(cards.shift(),
-            function(reactionTime,selectedCard,points,keyStroke){
+            function(reactionTime,selectedCard,points,keyStroke,probability){
                  outcomes.push(new outcome(reactionTime,selectedCard, points,
-                    keyStroke));
+                    keyStroke,probability));
             },
             function(points,locationClass, userResponded){
 
@@ -188,9 +188,9 @@ function createProbeTrialsFromCards(numTrialsToBuild,cards){
     for(var i = 0;  i< numTrialsToBuild; i++){
         trials.push(
             new trial(cards.shift(),
-                function(reactionTime,selectedCard,points,keyStroke){
+                function(reactionTime,selectedCard,points,keyStroke,probability){
                      outcomes.push(new outcome(reactionTime,selectedCard, points,
-                        keyStroke));
+                        keyStroke,probability));
                 },
                 function(points,locationClass, reactionTime){
                     
