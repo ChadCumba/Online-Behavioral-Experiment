@@ -136,17 +136,17 @@ function initialize(){
                         stackPointer = this.matlabMatrices[stackPrepCD].stacksCD;
                         AONewCDCardStack[i].push(
                             new cardStimulus( i, stackPointer, images[AONewImages[j][k][i]-1],
-                                20
+                                this.matlabMatrices[AONew].plocs[j][k][i]
                             )
                         );
                         AOTrainCDCardStack[i].push(
                             new cardStimulus( i, stackPointer, images[AOTrainImages[j][k][i]-1],
-                                20
+                                this.matlabMatrices[AOTrain].plocs[j][k][i]
                             )
                         );
                         SONewCDCardStack[i].push(
                             new cardStimulus(i, stackPointer, images[SONewImages[j][k][i]-1],
-                                20
+                                this.matlabMatrices[SONew].plocs[j][k][i]
                             )
                         );
                     }
