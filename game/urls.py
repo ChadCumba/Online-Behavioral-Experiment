@@ -10,7 +10,5 @@ urlpatterns = patterns('',
     (r'^loaddata/$', 'game.views.LoadGameData'),
     (r'^savedata/$', 'game.views.SaveGameData'),
     (r'^gameover/$', 'game.views.GameOver'),
-    (r'^results/(?P<user_id>\d+)/$', 'game.views.GetOutcomesByUser',
-         {'all_users':False}),
-    (r'^results/all/$', 'game.views.GetOutcomesByUser', {'all_users':True})
+    
 )
