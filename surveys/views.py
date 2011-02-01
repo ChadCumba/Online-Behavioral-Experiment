@@ -15,6 +15,9 @@ from django.conf import settings
 @login_required
 def PostgameSurveyView(request):
 
+    styles = ['survey.css']
+    styles = ["/" + settings.GAME_MEDIA_URL + "css/" + sheet for sheet in styles]
+
     if request.method == 'POST':
         form = PostgameSurveyForm(request.POST)
         if form.is_valid():
@@ -34,8 +37,6 @@ def PostgameSurveyView(request):
         survey = PostgameSurvey.objects.filter(user=request.user)
         if(len(survey) > 0):
             return HttpResponseRedirect(reverse('game.views.GameOver'))
-        styles = ['survey.css']
-        styles = ["/" + settings.GAME_MEDIA_URL + "css/" + sheet for sheet in styles]
         form = PostgameSurveyForm()
     return render_to_response('survey/generic_survey.html', {
         'form' : form,
