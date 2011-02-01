@@ -21,6 +21,9 @@ class MturkSignupForm(UserCreationForm):
         ('L', 'Left'),
     )
     handedness = forms.ChoiceField(choices=HANDEDNESS_CHOICES)
-    age = forms.IntegerField(min_value=13,max_value=99)
+    age = forms.IntegerField(min_value=18,max_value=40, error_messages={
+            'max_value' : 'Your age must be between 18 and 40 to participate',
+            'min_value' : 'Your age must be between 18 and 40 to participate',
+                                                                        })
     username = forms.CharField(widget=forms.HiddenInput())
     

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -15,8 +14,8 @@ class MturkProfile(models.Model):
     def clean(self):
         from django.core.exceptions import ValidationError
 
-        if self.age < 13 or self.age > 99:
-            raise ValidationError('All participants must be at least 13 years of age')
+        if self.age < 18 or self.age > 40:
+            raise ValidationError('All participants must be at between 18 and 40 years of age.')
 
         if self.gender is not 'M' and self.gender is not 'F':
             raise ValidationError('Gender is invalid')
