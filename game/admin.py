@@ -31,7 +31,7 @@ class GameAdmin(admin.ModelAdmin):
         else:
             sql_string = ""
         
-        user_games = queryset
+        user_games = [game for game in queryset if game.game_complete()]
         where_clause = " where t.user_id in ("
         for i in range(0,len(user_games)-1):
             where_clause = where_clause + str(user_games[i].user_id) + ","
