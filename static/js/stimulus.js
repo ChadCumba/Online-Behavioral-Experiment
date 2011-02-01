@@ -29,8 +29,26 @@ function cardStimulus(myLocation, myStack, myFeature, myProbability, myBackgroun
 
     this.pointValue = function(){
 
+        var stackLoc = 0;
         if(points == 0){
-            var outcome = stack[this.location].shift();
+            switch (this.probability){
+                case 70:
+                    stackLoc = 0;
+                    break;
+                case 60:
+                    stackLoc = 1;
+                    break;
+                case 40:
+                    stackLoc = 2;
+                    break;
+                case 30:
+                    stackLoc = 3;
+                    break;
+                default:
+                    stackLoc = this.location;
+                    break; 
+            }
+            var outcome = stack[stackLoc].shift();
             if(outcome == 1){
                 points = 15;
             }else{
@@ -38,7 +56,6 @@ function cardStimulus(myLocation, myStack, myFeature, myProbability, myBackgroun
             }
         }
         return points;
-
     };
 
 }

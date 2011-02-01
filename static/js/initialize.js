@@ -136,17 +136,17 @@ function initialize(){
                         stackPointer = this.matlabMatrices[stackPrepCD].stacksCD;
                         AONewCDCardStack[i].push(
                             new cardStimulus( i, stackPointer, images[AONewImages[j][k][i]-1],
-                                'contingency degredation'
+                                20
                             )
                         );
                         AOTrainCDCardStack[i].push(
                             new cardStimulus( i, stackPointer, images[AOTrainImages[j][k][i]-1],
-                                'contingency degredation'
+                                20
                             )
                         );
                         SONewCDCardStack[i].push(
                             new cardStimulus(i, stackPointer, images[SONewImages[j][k][i]-1],
-                                'contingency degredation'
+                                20
                             )
                         );
                     }
