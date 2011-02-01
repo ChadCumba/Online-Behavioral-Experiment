@@ -3,8 +3,8 @@
 # Developed in the Poldrack Lab at the University of Texas at Austin
 from game.models import Game, Outcome
 from django.contrib import admin
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse 
+
 
 class GameAdmin(admin.ModelAdmin):
     list_display=('__unicode__','game_complete','score','cash_amount',
@@ -30,7 +30,7 @@ class GameAdmin(admin.ModelAdmin):
             sql_string = "select u.username, t.id, t.reaction_time, t.selected_card, t.point_value, t.key_stroke, t.card_location, t.did_user_win, t.trial_number, t.probability,     t.user_id, g.condition, TIMEDIFF(t.timestamp ,g.timestamp) from game_outcome     t left join game_game g on g.user_id = t.user_id  left join auth_user u on     g.user_id = u.id  "
         else:
             sql_string = ""
-        
+
         user_games = [game for game in queryset if game.game_complete()]
         where_clause = " where t.user_id in ("
         for i in range(0,len(user_games)-1):
@@ -43,6 +43,7 @@ class GameAdmin(admin.ModelAdmin):
         response = HttpResponse(mimetype="text/csv")
         response['Content-Disposition'] = 'attachment; filename=userresults.csv'
         writer = csv.writer(response)
+        writer.writerow([desc[0] for desc in cursor.description])
         for row in rows:
             writer.writerow(row)
         return response
