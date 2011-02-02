@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.utils import simplejson
 from game.models import Game, Outcome
 from django.core.urlresolvers import reverse
+import random
 
 @login_required
 def Instructions(request):
@@ -120,6 +121,7 @@ def GameOver(request):
                                   context_instance=RequestContext(request))
     return render_to_response('game/gameover.html',
         {'game':game,
+         'random_letter' : chr(random.randrange(65,90)),
          'user':request.user},
         context_instance=RequestContext(request))
         
