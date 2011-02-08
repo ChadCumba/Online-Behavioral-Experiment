@@ -30,12 +30,17 @@ class SurveyAdmin(admin.ModelAdmin):
         writer.writerow(profile_keys + survey_keys)
         
         for survey in queryset:
+            
             survey_dict = model_to_dict(survey)
             profile_dict = model_to_dict(survey.user.get_profile())
             row = []
             for key in profile_keys:
+                if type(profile_dict[key]) is str:
+                    profile_dict[key] = profile_dict[key].encode('ascii','ignore')
                 row.append(profile_dict[key])
             for key in survey_keys:
+                if type(survey_dict[key]) is str:
+                    survey_dict[key] = survey_dict[key].encode('ascii','ignore')
                 row.append(survey_dict[key])
             
             writer.writerow(row)
