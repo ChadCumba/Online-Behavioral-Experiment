@@ -1,7 +1,7 @@
 # Chad Cumba
 # Chad.Cumba@mail.utexas.edu
 # Developed in the Poldrack Lab at the University of Texas at Austin
-from game.models import Game, Outcome
+from game.models import Game, Outcome, GameOverride
 from django.contrib import admin
 from django.http import HttpResponse 
 
@@ -52,3 +52,4 @@ class GameAdmin(admin.ModelAdmin):
     
 admin.site.register(Game, GameAdmin)
 admin.site.register(Outcome)
+admin.site.register(GameOverride)

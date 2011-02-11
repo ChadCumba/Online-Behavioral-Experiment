@@ -66,3 +66,15 @@ class Outcome(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
     probability = models.CharField(max_length=255)
     user = models.ForeignKey(User, unique=False)
+    
+class GameOverride(models.Model):
+    CONDITION_CHOICES = (
+        (0,'0'),
+        (1,'1'),
+        (2,'2'),
+        (3,'3'),
+        (4,'4'),
+        (5,'5'),
+        (6,'6'),
+    )
+    condition = models.IntegerField(choices=CONDITION_CHOICES,null=True)

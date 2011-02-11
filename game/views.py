@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils import simplejson
-from game.models import Game, Outcome
+from game.models import Game, Outcome, GameOverride
 from django.core.urlresolvers import reverse
 import random
 
@@ -70,13 +70,20 @@ def LoadGameData(request):
         response = {'error': 'Game has already been played'}
         json = simplejson.dumps(response)
         return HttpResponse(json,mimetype='application/json')
-
+    try:
+        gameOverride = GameOverride.objects.get(id=1)
+        if(gameOverride.condition in range(1,7)):
+            condition = gameOverride.condition
+        else:
+            condition = game.condition
+    except GameOverride.DoesNotExist:
+        condition = game.condition
     json = {
         'game_json' : simplejson.loads(game.game_json),
         'ao_new'    : simplejson.loads(game.ao_new),
         'ao_train'  : simplejson.loads(game.ao_train),
         'so_new'    : simplejson.loads(game.so_new),
-        'condition' : game.condition,
+        'condition' : condition,
     }
 
     json = simplejson.dumps(json)
