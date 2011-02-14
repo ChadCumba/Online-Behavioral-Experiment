@@ -74,6 +74,8 @@ def LoadGameData(request):
         gameOverride = GameOverride.objects.get(id=1)
         if(gameOverride.condition in range(1,7)):
             condition = gameOverride.condition
+            game.condition = condition
+            game.save()
         else:
             condition = game.condition
     except GameOverride.DoesNotExist:
