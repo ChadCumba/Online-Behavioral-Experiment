@@ -5,10 +5,10 @@
 from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
-    (r'^instructions/$', 'game.views.Instructions'),
-    (r'^play/$','game.views.Play'),
-    (r'^loaddata/$', 'game.views.LoadGameData'),
-    (r'^savedata/$', 'game.views.SaveGameData'),
-    (r'^gameover/$', 'game.views.GameOver'),
+    #(r'^instructions/$', 'game.views.Instructions'),
+    #(r'^play/$','game.views.Play'),
+    #(r'^loaddata/$', 'game.views.LoadGameData'),
+    #(r'^savedata/$', 'game.views.SaveGameData'),
+    #(r'^gameover/$', 'game.views.GameOver'),
     
 )

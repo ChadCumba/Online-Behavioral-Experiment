@@ -6,6 +6,6 @@ from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
      # Uncomment the next line to enable the admin:
-     (r'^$', 'signup.views.register'),
+     #(r'^$', 'signup.views.register'),
      
 )
