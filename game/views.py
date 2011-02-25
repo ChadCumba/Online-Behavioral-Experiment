@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils import simplejson
@@ -93,6 +94,7 @@ def LoadGameData(request):
     return HttpResponse(json, mimetype='application/json')
 
 @login_required
+@csrf_exempt
 def SaveGameData(request):
     if request.method == "POST":
         outcomes = simplejson.loads(request.POST['response_json_data'])
