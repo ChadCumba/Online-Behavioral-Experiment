@@ -16,18 +16,29 @@ class SurveyAdmin(admin.ModelAdmin):
         try:
             [survey.user.get_profile() for survey in queryset]
         except ObjectDoesNotExist:
-            self.message_user(request, 'One or more of the users does not have a profile.')
-            self.message_user(request, 'Error, download canceled')
-            return
+            self.message_user(request,
+                'One or more of the users does not have a profile.')
+            self.message_user(request,
+                'Some of the surveys you selected have been removed from the output.')
+            queryset = queryset.filter(user__mturkprofile__isnull = False)
+            try:
+                [survey.user.get_profile() for survey in queryset]
+            except ObjectDoesNotExist:
+                self.message_user(request,
+                    'Something went wrong. Unrecoverable. Download aborted.')
+                return
+        
+            
         
         survey_keys = queryset[0]._meta.get_all_field_names()
         profile_keys = queryset[0].user.get_profile()._meta.get_all_field_names()
+        
         
         response = HttpResponse(mimetype="text/csv")
         response['Content-Disposition'] = 'attachment; filename=profilesurvey.csv'
         
         writer = csv.writer(response)
-        writer.writerow(profile_keys + survey_keys)
+        writer.writerow(profile_keys + survey_keys + ['username'])
         
         for survey in queryset:
             
@@ -44,6 +55,7 @@ class SurveyAdmin(admin.ModelAdmin):
                     row.append( survey_dict[key].encode('ascii','ignore'))
                 else:
                     row.append(survey_dict[key])
+            row.append(survey.user.username.encode('ascii','ignore'))
             
             writer.writerow(row)
         return response
